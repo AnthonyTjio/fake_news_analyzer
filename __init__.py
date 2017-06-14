@@ -36,14 +36,12 @@ def analyze():
 	article = request.form.get('article')
 
 	# Analyzing 
-	real_prob, fake_prob = Driver.predict_text(src=src, title=title, article=article, label=label)
+	prob = Driver.predict_text(src=src, title=title, article=article)
 
 	# Configuring Response
 	response_obj = AnalyzeResponseTemplate()
 	response_obj.success = True
-	response_obj.real_prob = real_prob
-	response_obj.fake_prob = fake_prob
-
+	response_obj.real_prob = prob
 	response = json.dumps(response_obj, default=jdefault)
 
 	return app.response_class(

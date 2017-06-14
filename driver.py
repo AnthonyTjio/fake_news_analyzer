@@ -54,8 +54,7 @@ class Driver:
 		fasttextProcessor = FastTextProcessor()
 
 		np_text_input = FastTextPreprocessor.normalize_content_data(src, title, article)
-		text_input = ' '.join(str(word) for word in np_text_input)
-		text_input = StringManipulator.remove_extra_spaces(text_input)
+		text_input = StringManipulator.remove_extra_spaces(np_text_input)
 
 		real_prob, fake_prob = fasttextProcessor.predict_text(text_input)
 

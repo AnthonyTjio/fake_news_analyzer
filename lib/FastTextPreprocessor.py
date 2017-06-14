@@ -12,9 +12,7 @@ class FastTextPreprocessor:
 	@ classmethod
 	def normalize_content_data(cls, src, title, article):
 		np_data = src + " " + title + " " + article
-		np_data = np.array(np_data.split(" "))
-		for i, dum in enumerate(np_data):
-			np_data[i] = str(np_data[i])
-			np_data[i] = StringManipulator.normalize_text(np_data[i], remove_stopword=True)
+		
+		np_data = StringManipulator.normalize_text(np_data, remove_stopword=True)
 
 		return np_data

@@ -4,13 +4,13 @@ class WordEmbeddingConfig(object):
 	model_dir = './model/word.vec'
 	
 class TrainingConfig(object):
-	dim = 10
+	dim = 30
 	lr = 0.01
-	epoch = 150
+	epoch = 200
 	evaluate_every = 1
 	min_count = 1
 
-	word_ngrams = 3
+	word_ngrams = 5
 	thread = 3
 	silent = 1
 	bucket = 2000000

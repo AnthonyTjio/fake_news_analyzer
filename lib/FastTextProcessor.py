@@ -26,4 +26,5 @@ class FastTextProcessor:
 		result = self.classifier.predict_proba([predict_data], k=2)
 		real_prob = float("{0:.2f}".format(result[0][0][1]))
 		fake_prob = float("{0:.2f}".format(result[0][1][1]))
-		return real_prob, fake_prob
+		prob = real_prob / (real_prob+fake_prob)
+		return prob

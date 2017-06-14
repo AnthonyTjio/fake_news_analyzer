@@ -19,57 +19,11 @@ if(command == "createmodel"):
 			test_data = arg
 
 	Driver.create_model(train_data, test_data)
-
-elif(command == "convert"):
-	opts, args = getopt.getopt(sys.argv[2:], "i:o:d:l:p:", ["input=", "output=", "prefix=", 
-															"data_column=", "label_column="])
-	input_file = 'data.csv'
-	output_file = 'training.txt'
-	prefix = False
-	label_prefix = None
-	data_column = []
-	label_column = 3
-	
-	for opt, arg in opts:
-		if opt in ('-i', '--input'):
-			input_file = arg
-		elif opt in ('-o', 'output'):
-			output_file = arg
-		elif opt in ('-d', '--data_column'):
-			data_column.append(int(arg))
-		elif opt in ('-l', '--label_column'):
-			label_column = int(arg)
-		elif opt in ('-p', '--prefix'):
-			label_prefix = arg
-
-	if label_prefix:
-		prefix = True
-
-	Driver.convert_dataset(input_csv=input_file, output_txt=output_file, data_columns=data_column, 
-						   label_column=label_column, label_prefix=label_prefix, 
-						   append_label_prefix=prefix)
 	
 elif(command == "train"):
 	opts, args = getopt.getopt(sys.argv[2:], "i:", ["input="])
 
-	input_file = 'training.txt'
-
-	for opt, arg in opts:
-		if opt in ('-i', '--input'):
-			input_file = arg
-
-	Driver.train_model(input_file)
-
-elif(command == 'test'):
-	opts, args = getopt.getopt(sys.argv[2:], "i:c:", ["input="])
-
-	input_file = 'test.txt'
-
-	for opt, arg in opts:
-		if opt in ('-i', '--input'):
-			input_file = arg
-
-	Driver.test_model(input_file)
+	Driver.train_model()
 
 elif(command == 'predict'):
 	opts, args = getopt.getopt(sys.argv[2:], "i:f:o:", ["input=", "file=", "output="])
